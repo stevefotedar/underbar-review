@@ -230,7 +230,7 @@
     //   if (iterator(value)) {
     //     bool = true;
     //   } 
-    //   return bool
+    //   return bool;
     // });
 
     if (!iterator) {
@@ -347,7 +347,7 @@
     var results = {};
 
     return function () {
-      var args = [... arguments].join("$");
+      var args = [...arguments].join("$");
 
       if (results[args]) {
         return results[args];
@@ -365,6 +365,8 @@
   // parameter. For example _.delay(someFunction, 500, 'a', 'b') will
   // call someFunction('a', 'b') after 500ms
   _.delay = function(func, wait) {
+    var args = [...arguments].slice(2);
+    setTimeout(function () {func.apply(null, args); }, wait);
   };
 
 
@@ -379,6 +381,22 @@
   // input array. For a tip on how to make a copy of an array, see:
   // http://mdn.io/Array.prototype.slice
   _.shuffle = function(array) {
+    var resultArr = [];
+    var copyArr = array.slice();
+    // for (var i = 0; i < array.length; i++) {
+    //   var randIdx = Math.floor(Math.random() * (copyArr.length - 1));
+    //   var temp = copyArr.splice(randIdx, 1);
+    //   resultArr.push(temp[0]);
+    // }
+    // return resultArr;
+    for (var i = 0; i < (copyArr.length - 1); i++) {
+      var randIdx = Math.floor(Math.random() * (copyArr.length - i)) + i;
+      var temp1 = copyArr[i];
+      var temp2 = copyArr[randIdx]
+      copyArr[i] = temp2;
+      copyArr[randIdx] = temp1;
+    }
+    return resultArr;
   };
 
 
