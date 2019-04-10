@@ -342,7 +342,7 @@
         expect(uniqueNumbers).to.not.equal(numbers);
       });
       
-      xit('should maintain same array length', function() {
+      it('should maintain same array length', function() {
         var numbers = [1, 1, 2, 3];
         var shuffled = _.shuffle(numbers);
 
