@@ -383,20 +383,20 @@
   _.shuffle = function(array) {
     var resultArr = [];
     var copyArr = array.slice();
-    // for (var i = 0; i < array.length; i++) {
-    //   var randIdx = Math.floor(Math.random() * (copyArr.length - 1));
-    //   var temp = copyArr.splice(randIdx, 1);
-    //   resultArr.push(temp[0]);
-    // }
-    // return resultArr;
-    for (var i = 0; i < (copyArr.length - 1); i++) {
-      var randIdx = Math.floor(Math.random() * (copyArr.length - i)) + i;
-      var temp1 = copyArr[i];
-      var temp2 = copyArr[randIdx]
-      copyArr[i] = temp2;
-      copyArr[randIdx] = temp1;
+    for (var i = 0; i < array.length; i++) {
+      var randIdx = Math.floor(Math.random() * (copyArr.length - 1));
+      var temp = copyArr.splice(randIdx, 1);
+      resultArr.push(temp[0]);
     }
     return resultArr;
+    // for (var i = 0; i < (copyArr.length - 1); i++) {
+    //   var randIdx = Math.floor(Math.random() * (copyArr.length - i)) + i;
+    //   var temp1 = copyArr[i];
+    //   var temp2 = copyArr[randIdx]
+    //   copyArr[i] = temp2;
+    //   copyArr[randIdx] = temp1;
+    // }
+    // return resultArr;
   };
 
 
